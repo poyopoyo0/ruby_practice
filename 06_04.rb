@@ -32,7 +32,7 @@ leap_year = []
 ((year_array[0].to_i)..(year_array[1].to_i)).each do |year|
   if year%4 == 0 && year%100 != 0
     leap_year.push year
-  elsif year%100 == 0 && year%400 == 0
+  elsif year%400 == 0
     leap_year.push year
   end
 end
@@ -40,5 +40,5 @@ end
 if leap_year.length == 0
   puts "入力した年の範囲に閏年はありません。"
 else
-  puts "入力した範囲の閏年は、" + leap_year.join("年、") + "年です。"
+  puts "入力した年の範囲の閏年は、" + leap_year.join("年、") + "年です。"
 end
