@@ -25,6 +25,6 @@ while word.size == 1 && word[0] == ""
   word = store_words
 end
 
-puts "ソートした出力を表示します"
+puts "ソートした結果を表示します"
 puts word.sort
 puts
