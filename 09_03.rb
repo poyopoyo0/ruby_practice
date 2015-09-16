@@ -5,25 +5,12 @@ class OrangeTree
     @tree_age = 0
     @tree_height = 100
     @orange = 0
+    @max_age = rand(10)
 
     puts "オレンジの木を植えてみました。"
     height
     pichAnOrange
     puts
-
-    @max_age = rand(11)
-
-    while @tree_age < @max_age
-      oneYearPasses
-      height
-      countTheOranges
-      puts
-    end
-
-    if @tree_age == @max_age
-      oneYearPasses
-      puts
-    end
   end
 
   def height
@@ -67,6 +54,21 @@ class OrangeTree
 
     @orange = 0
   end
+
+  attr_accessor :tree_age
+  attr_accessor :max_age
 end
 
-OrangeTree.new
+orange_tree = OrangeTree.new
+
+while orange_tree.tree_age < orange_tree.max_age
+  orange_tree.oneYearPasses
+  orange_tree.height
+  orange_tree.countTheOranges
+  puts
+end
+
+if orange_tree.tree_age == orange_tree.max_age
+  orange_tree.oneYearPasses
+  puts
+end
