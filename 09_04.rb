@@ -1,3 +1,5 @@
+# coding: utf-8
+
 class Dragon
 
   def initialize name
@@ -5,8 +7,10 @@ class Dragon
     @asleep = false
     @stuffInBelly     = 10  #  最初彼はおなかいっぱいです。
     @stuffInIntestine =  0  #  トイレはまだ大丈夫。(Bellyは胃、Intestineは腸です。)
+    @talk_array = ["feed","walk","putToBed","toss","rock"]
 
     puts @name + ' は生まれました.'
+    puts "赤ちゃんドラゴンに話しかけてみて下さい."
   end
 
   def feed
@@ -53,6 +57,25 @@ class Dragon
       @asleep = false
       puts '...でもやめるとすぐ起きちゃう.'
     end
+  end
+
+  def talkWith
+    puts "話しかける言葉は"
+    puts "feed, walk, putToBed, toss, rock"
+    puts "の中から選んで下さい."
+
+    talk_words = gets.chomp
+
+    if talk_words != ""
+      puts
+    end
+
+    if @talk_array.include?(talk_words)
+      send(talk_words)
+      puts
+    end
+    
+    talkWith
   end
 
   private
@@ -113,3 +136,4 @@ class Dragon
 end
 
 pet = Dragon.new 'Norbert'
+pet.talkWith
