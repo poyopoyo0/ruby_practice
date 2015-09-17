@@ -10,7 +10,7 @@ class Dragon
     @talk_array = ["feed","walk","putToBed","toss","rock"]
 
     puts @name + ' は生まれました.'
-    puts "赤ちゃんドラゴンに話しかけてみて下さい."
+    puts "話しかけてみて下さい."
   end
 
   def feed
