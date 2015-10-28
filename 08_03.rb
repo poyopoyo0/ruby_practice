@@ -130,7 +130,7 @@ def weddingNumber number
   end
 
   write = left #  ここで、一の桁を書き出します。
-  left = 0 #  この桁を引きます。(0になります。)
+  # left = 0 #  この桁を引きます。(0になります。)
 
   if write > 0
     num_string += ones_place[write - 1]
