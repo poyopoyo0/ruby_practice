@@ -14,7 +14,7 @@ def store_words
     end
   end
 
-  return word_array
+  word_array
 end
 
 puts "単語を入力して下さい"

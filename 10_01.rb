@@ -1,6 +1,6 @@
 # coding: utf-8
 
-def grandpa &block
+def grandpa(&block)
   repeat_times = Time.now.hour % 12
 
   if repeat_times == 0
@@ -23,10 +23,10 @@ end
 puts
 
 clock = 0
-array = ["哲学", "ロシア文学", "シェイクスピア", "ホメロス", "ギリシャ神話", "映画", "数学", "Linux", "機械学習", "民俗学", "ケインズ", "古事記"]
+array = %w(哲学 ロシア文学 シェイクスピア ホメロス ギリシャ神話 映画 数学 Linux 機械学習 民俗学 ケインズ 古事記)
 grandpa do
   clock += 1
-  content_sample= array.sample
+  content_sample = array.sample
   puts clock.to_s << "時には" << content_sample << "の本を読みました。"
   array.delete(content_sample)
 end
@@ -37,7 +37,7 @@ clock = 0
 factorial_num = 1
 grandpa do
   clock += 1
-  factorial_num = factorial_num * clock
+  factorial_num *= clock
   puts clock.to_s << "の階乗（" << clock.to_s << "!）は" << factorial_num.to_s << "です。"
 end
 

@@ -1,13 +1,12 @@
 # coding: utf-8
 
 class Dragon
-
   def initialize name
     @name = name
     @asleep = false
-    @stuffInBelly     = 10  #  最初彼はおなかいっぱいです。
-    @stuffInIntestine =  0  #  トイレはまだ大丈夫。(Bellyは胃、Intestineは腸です。)
-    @talk_array = ["feed","walk","putToBed","toss","rock"]
+    @stuff_in_belly     = 10  #  最初彼はおなかいっぱいです。
+    @stuff_in_intestine =  0  #  トイレはまだ大丈夫。(Bellyは胃、Intestineは腸です。)
+    @talk_array = %w(feed walk putToBed toss rock)
 
     puts @name + ' は生まれました.'
     puts "話しかけてみて下さい."
@@ -15,13 +14,13 @@ class Dragon
 
   def feed
     puts 'あなたは ' + @name + 'に食べ物を与えます.'
-    @stuffInBelly = 10
+    @stuff_in_belly = 10
     passageOfTime
   end
 
   def walk
     puts 'あなたは ' + @name + 'をトイレに連れて行きます.'
-    @stuffInIntestine = 0
+    @stuff_in_intestine = 0
     passageOfTime
   end
 
@@ -74,7 +73,7 @@ class Dragon
       send(talk_words)
       puts
     end
-    
+
     talkWith
   end
 
@@ -89,30 +88,30 @@ class Dragon
     #  メソッドの名前は"?"で終わることができます。
     #  通常、メソッドがtrueかfalseのどちらかを返すときだけ、
     #  この名前を使います。このように:
-    @stuffInBelly <= 2
+    @stuff_in_belly <= 2
   end
 
   def poopy?
-    #うんちが出そう?
-    @stuffInIntestine >= 8
+    # うんちが出そう?
+    @stuff_in_intestine >= 8
   end
 
   def passageOfTime
-    if @stuffInBelly > 0
+    if @stuff_in_belly > 0
       #  食べたものは、胃から腸へ移動
-      @stuffInBelly     = @stuffInBelly     - 1
-      @stuffInIntestine = @stuffInIntestine + 1
-    else  #  私たちのドラゴンは飢えました!
+      @stuff_in_belly -= 1
+      @stuff_in_intestine += 1
+    else #  私たちのドラゴンは飢えました!
       if @asleep
         @asleep = false
         puts '彼は突然跳び起きます!'
       end
       puts @name + ' は飢え死にしそう!  死に物狂いの彼は"あなた"を食べてしまいました!'
-      exit  #  プログラムを終了します。
+      exit #  プログラムを終了します。
     end
 
-    if @stuffInIntestine >= 10
-      @stuffInIntestine = 0
+    if @stuff_in_intestine >= 10
+      @stuff_in_intestine = 0
       puts 'おっと!  ' + @name + ' はやっちゃったようです...'
     end
 
@@ -132,7 +131,6 @@ class Dragon
       puts @name + ' はうんちをしたくて踊っています...'
     end
   end
-
 end
 
 pet = Dragon.new 'Norbert'

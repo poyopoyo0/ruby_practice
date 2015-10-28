@@ -1,7 +1,7 @@
 # coding: utf-8
 
 def englishNumber number
-  if number < 0  #  負の数は不可です。
+  if number < 0 #  負の数は不可です。
     return '負でない数を入力してください.'
   end
   if number == 0
@@ -10,35 +10,32 @@ def englishNumber number
 
   #  もう、上限として特別の場合は設けません。余分なreturnもなし。
 
-  numString = ''  #  これが最終的に返す文字列です。
+  num_string = '' #  これが最終的に返す文字列です。
 
-  onesPlace = ['one',     'two',       'three',    'four',     'five',
-               'six',     'seven',     'eight',    'nine']
-  tensPlace = ['ten',     'twenty',    'thirty',   'forty',    'fifty',
-               'sixty',   'seventy',   'eighty',   'ninety']
-  teenagers = ['eleven',  'twelve',    'thirteen', 'fourteen', 'fifteen',
-               'sixteen', 'seventeen', 'eighteen', 'nineteen']
+  ones_place = %w(one two three four five six seven eight nine)
+  tens_place = %w(ten twenty thirty forty fifty sixty seventy eighty ninety)
+  teenagers = %w(eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen)
 
-  write = number/1000
-  left  = number - (number/1000)*1000
+  write = number / 1000
+  left  = number - (number / 1000) * 1000
 
   if write > 0
-    thousands  = englishNumber write
-    numString = numString + thousands + ' thousand'
+    thousands = englishNumber write
+    num_string = num_string << thousands << ' thousand'
 
-     if left > 0
-      numString = numString + ' '
+    if left > 0
+      num_string = num_string << ' '
     end
   end
 
-  write = (number/100)%10
-  left  = number - (number/100)*100
+  write = (number / 100) % 10
+  left = number - (number / 100) * 100
 
   if write > 0
     #  さて、ここでちょっとしたトリックを使います。
 
-    hundreds  = englishNumber write
-    numString = numString + hundreds + ' hundred'
+    hundreds = englishNumber write
+    num_string = num_string << hundreds << ' hundred'
 
     #  これは「再帰法」と呼ばれる技です。さて何をやって
     #  いるのでしょう? 上の行ではメソッドの中で自分自身
@@ -48,7 +45,7 @@ def englishNumber number
     #  ここで、"write"が(この時点では)、最終的に英語で
     #  出力すべき数の百の位以上の数であるということを
     #  思い出してください。
-    #  2行目では、"hundreds"を"numString"の後に追加して、
+    #  2行目では、"hundreds"を"num_string"の後に追加して、
     #  さらに、' hundred'という文字列を追加しています。
     #  具体的に言うと、たとえば、最初に引数を1999とする
     #  と(つまり、"number" = 1999)、englishNumberを呼ぶ
@@ -58,23 +55,23 @@ def englishNumber number
     #  ' hundred'を出力し、最後に残りの'ninety-nine'を
     #  englishNumberが出力してくれれば良いわけです。
 
-     if left > 0
+    if left > 0
       #  この時、'two hundredfifty-one'のように
       #  ならないためにスペースを入れます。
-      numString = numString + ' '
+      num_string = num_string << ' '
     end
   end
 
-  write = left/10          #  今度は十の桁です。
-  left  = left - write*10  #  そして十の桁をひきます。
+  write = left / 10 #  今度は十の桁です。
+  left -= write * 10 #  そして十の桁をひきます。
 
   if write > 0
-    if ((write == 1) and (left > 0))
+    if write == 1 && left > 0
       #  英語では12は"twelve"であって、"tenty-two"と
       #  言うわけには行きません。そこで、十の桁が1の
       #  ときは特別扱いしなければなりません。
 
-      numString = numString + teenagers[left-1]
+      num_string = num_string << teenagers[left - 1]
 
       #  この"-1" は、teenagers[3] が 'fourteen'で
       #  あって、'thirteen'ではないため必要です。
@@ -84,42 +81,43 @@ def englishNumber number
 
       left = 0
     else
-      numString = numString + tensPlace[write-1]
+      num_string = num_string << tens_place[write - 1]
 
-      #  この"-1" も、tensPlace[3] が'forty'で'thirty'ではない
+      #  この"-1" も、tens_place[3] が'forty'で'thirty'ではない
       #  ため必要。
     end
 
     if left > 0
       #  'sixtyfour'とは書かずに、途中にハイフンを入れます。
-      numString = numString + '-'
+      num_string = num_string << '-'
     end
   end
 
-  write = left  #  ここで、一の桁を書き出します。
-  left  = 0     #  この桁を引きます。(0になります。)
+  write = left #  ここで、一の桁を書き出します。
+  left = 0 #  この桁を引きます。(0になります。)
 
   if write > 0
-    numString = numString + onesPlace[write-1]
-    #  この"-1"はonesPlace[3]が'four'であって
+    num_string = num_string << ones_place[write - 1]
+    #  この"-1"はones_place[3]が'four'であって
     #  'three'ではないから必要。
   end
 
-  #  最後に"numString"を返します。
-  numString
+  #  最後に"num_string"を返します。
+  num_string
 end
 
-puts englishNumber(  0)
-puts englishNumber(  9)
-puts englishNumber( 10)
-puts englishNumber( 11)
-puts englishNumber( 17)
-puts englishNumber( 32)
-puts englishNumber( 88)
-puts englishNumber( 99)
+puts englishNumber(0)
+puts englishNumber(9)
+puts englishNumber(10)
+puts englishNumber(11)
+puts englishNumber(17)
+puts englishNumber(32)
+puts englishNumber(88)
+puts englishNumber(99)
 puts englishNumber(100)
 puts englishNumber(101)
 puts englishNumber(234)
 puts englishNumber(3211)
 puts englishNumber(999999)
 puts englishNumber(1000000000000)
+puts

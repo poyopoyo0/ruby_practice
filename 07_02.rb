@@ -14,7 +14,7 @@ def store_words
     end
   end
 
-  return word_array
+  word_array
 end
 
 class Array
@@ -26,7 +26,7 @@ class Array
     left.quick_sort + [pivot] + right.quick_sort
   end
 end
-  
+
 puts "単語を入力して下さい"
 word = store_words
 
@@ -38,8 +38,8 @@ end
 puts "ソートした結果を表示します"
 word.each_with_index do |words, i|
   word_array = words.each_codepoint.to_a
-  word_array.each_with_index do |w, i|
-    word_array[i] = sprintf("%07d", w.to_i)
+  word_array.each_with_index do |w, j|
+    word_array[j] = sprintf("%07d", w.to_i)
   end
   word[i] = word_array.join(";")
 end
@@ -48,8 +48,8 @@ word = word.quick_sort
 
 word.each_with_index do |words, i|
   words_string_array = words.split(";")
-  words_string_array.each_with_index do |w, i|
-    words_string_array[i] = w.to_i.chr(Encoding::UTF_8)
+  words_string_array.each_with_index do |w, j|
+    words_string_array[j] = w.to_i.chr(Encoding::UTF_8)
   end
   word[i] = words_string_array.join
 end
