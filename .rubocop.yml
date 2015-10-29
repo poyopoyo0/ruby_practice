@@ -56,3 +56,6 @@ Metrics/MethodLength:
 
 Metrics/ClassLength:
   Enabled: false
+
+GlobalVars:
+  AllowedVariables: [$nesting_depth]
