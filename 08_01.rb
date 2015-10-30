@@ -120,4 +120,4 @@ puts englishNumber(234)
 puts englishNumber(3211)
 puts englishNumber(999999)
 puts englishNumber(1000000000000)
-puts
+puts "\n"

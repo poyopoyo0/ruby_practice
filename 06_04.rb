@@ -24,7 +24,7 @@ year_array = input_year
 
 while year_array[0].to_i > year_array[1].to_i
   puts "終了の年は、開始の年より後の年にして下さい"
-  puts
+  puts "\n"
   year_array = input_year
 end
 
@@ -42,4 +42,4 @@ if leap_year.length == 0
 else
   puts "入力した年の範囲の閏年は、" + leap_year.join("年、") + "年です。"
 end
-puts
+puts "\n"

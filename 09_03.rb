@@ -10,7 +10,7 @@ class OrangeTree
     puts "オレンジの木を植えてみました。"
     height
     pichAnOrange
-    puts
+    puts "\n"
   end
 
   def height
@@ -71,10 +71,10 @@ while orange_tree.tree_age < orange_tree.max_age
   orange_tree.countTheOranges
   orange_tree.pichAnOrange
   orange_tree.countTheOranges
-  puts
+  puts "\n"
 end
 
 if orange_tree.tree_age == orange_tree.max_age
   orange_tree.oneYearPasses
-  puts
+  puts "\n"
 end

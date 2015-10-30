@@ -153,5 +153,5 @@ end
 
   puts "Take one down and pass it around"
   puts englishNumber(i - 1) + " Bottles of beer on the wall"
-  puts
+  puts "\n"
 end

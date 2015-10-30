@@ -66,12 +66,12 @@ class Dragon
     talk_words = gets.chomp
 
     if talk_words != ""
-      puts
+      puts "\n"
     end
 
     if @talk_array.include?(talk_words)
       send(talk_words)
-      puts
+      puts "\n"
     end
 
     talkWith

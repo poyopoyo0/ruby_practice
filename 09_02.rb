@@ -13,4 +13,4 @@ puts
 for year in 0..age do
   puts((birth_year.to_i + year).to_s << "年" << birth_month.to_s << "月" << birth_day.to_s << "日、" << year.to_s << "歳の誕生日おめでとう！")
 end
-puts
+puts "\n"

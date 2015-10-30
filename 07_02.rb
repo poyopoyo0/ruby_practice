@@ -55,4 +55,4 @@ word.each_with_index do |words, i|
 end
 
 puts word
-puts
+puts "\n"

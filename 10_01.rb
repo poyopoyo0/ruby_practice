@@ -41,4 +41,4 @@ grandpa do
   puts clock.to_s << "の階乗（" << clock.to_s << "!）は" << factorial_num.to_s << "です。"
 end
 
-puts
+puts "\n"

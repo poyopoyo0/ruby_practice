@@ -15,4 +15,4 @@ layout_array.each do |layout|
     puts layout[0].ljust(line_width / 2) + layout[1].rjust(line_width / 2)
   end
 end
-puts
+puts "\n"

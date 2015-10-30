@@ -27,4 +27,4 @@ end
 
 puts "ソートした結果を表示します"
 puts word.sort
-puts
+puts "\n"

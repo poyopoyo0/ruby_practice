@@ -11,5 +11,5 @@
 
   puts "Take one down and pass it around"
   puts((i - 1).to_s << " Bottles of beer on the wall")
-  puts
+  puts "\n"
 end
